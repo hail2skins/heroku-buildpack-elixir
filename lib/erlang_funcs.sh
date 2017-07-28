@@ -14,7 +14,7 @@ function download_erlang() {
     erlang_changed=true
 
     output_section "Fetching Erlang ${erlang_version}"
-    sudo curl -s ${erlang_package_url} -o ${cache_path}/$(erlang_tarball) || exit 1
+    curl -s https://s3.amazonaws.com/heroku-buildpack-elixir/erlang/cedar-14/OTP-19.3.tar.gz -o ${cache_path}/$(erlang_tarball) || exit 1
   else
     output_section "Using cached Erlang ${erlang_version}"
   fi
