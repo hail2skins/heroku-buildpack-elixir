@@ -14,14 +14,14 @@ function download_erlang() {
     erlang_changed=true
 
     output_section "Fetching Erlang ${erlang_version}"
-    curl -s ${erlang_package_url} || exit 1
+    curl -s ${erlang_package_url} -o ${erlang_tarball} || exit 1
   else
     output_section "Using cached Erlang ${erlang_version}"
   fi
 }
 
 function clean_erlang_downloads() {
-  rm -rf ${cache_path}/OTP-*.tar.gz
+  rm -rf OTP-*.tar.gz
 }
 
 function install_erlang() {
