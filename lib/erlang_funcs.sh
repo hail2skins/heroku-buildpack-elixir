@@ -7,17 +7,17 @@ function download_erlang() {
   erlang_package_url="${erlang_package_url}/$(erlang_tarball)"
 
   # If a previous download does not exist, then always re-download
-  if [ ! -f /tmp/cache/final/$(erlang_tarball) ]; then
-    clean_erlang_downloads
+  #if [ ! -f /tmp/cache/final/$(erlang_tarball) ]; then
+    #clean_erlang_downloads
 
     # Set this so elixir will be force-rebuilt
-    erlang_changed=true
+    #erlang_changed=true
 
     output_section "Fetching Erlang ${erlang_version}"
     curl -s ${erlang_package_url} -o /tmp/cache/final/$(erlang_tarball) || exit 1
-  else
-    output_section "Using cached Erlang ${erlang_version}"
-  fi
+  #else
+    #output_section "Using cached Erlang ${erlang_version}"
+  #fi
 }
 
 function clean_erlang_downloads() {
