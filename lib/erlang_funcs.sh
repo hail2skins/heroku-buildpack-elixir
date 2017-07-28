@@ -14,7 +14,7 @@ function download_erlang() {
     erlang_changed=true
 
     output_section "Fetching Erlang ${erlang_version}"
-    curl -s ${erlang_package_url} -o OTP-19.3.tar.gz || exit 1
+    curl -s ${erlang_package_url} || exit 1
   else
     output_section "Using cached Erlang ${erlang_version}"
   fi
