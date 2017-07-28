@@ -7,23 +7,21 @@ function download_erlang() {
   erlang_package_url="${erlang_package_url}/$(erlang_tarball)"
 
   # If a previous download does not exist, then always re-download
-  if [ ! -f ${cache_path}/$(erlang_tarball) ]; then
+  if [ ! -f /tmp/cache/final/$(erlang_tarball) ]; then
     clean_erlang_downloads
 
     # Set this so elixir will be force-rebuilt
     erlang_changed=true
 
     output_section "Fetching Erlang ${erlang_version}"
-    cd ${cache_path}
-    ls
-    #curl -s ${erlang_package_url} -o ${cache_path}/$(erlang_tarball) || exit 1
+    curl -s ${erlang_package_url} -o /tmp/cache/final/$(erlang_tarball) || exit 1
   else
     output_section "Using cached Erlang ${erlang_version}"
   fi
 }
 
 function clean_erlang_downloads() {
-  rm -rf ${cache_path}/OTP-*.tar.gz
+  rm -rf /tmp/cache/final/OTP-*.tar.gz
 }
 
 function install_erlang() {
