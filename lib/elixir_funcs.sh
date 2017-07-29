@@ -29,7 +29,7 @@ function install_elixir() {
   cd $(elixir_path)
 
   if type "unzip" &> /dev/null; then
-    unzip -q ${cache_path}/Precompiled.zip
+    unzip -q ${cache_path}/Precompiled
   else
     jar xf ${cache_path}/$(elixir_download_file)
   fi
