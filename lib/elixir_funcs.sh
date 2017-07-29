@@ -23,7 +23,7 @@ function install_elixir() {
   mkdir -p $(elixir_path)
   cd $(elixir_path)
   
-  echo pwd
+  output_section "${whereami}"
 
   if type "unzip" &> /dev/null; then
     unzip -q ${cache_path}/$(elixir_download_file)
@@ -61,7 +61,7 @@ function fix_elixir_version() {
 }
 
 function whereami() {
-  pwd
+  pwd -P
 }
 
 function elixir_download_file() {
