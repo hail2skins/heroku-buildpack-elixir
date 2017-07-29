@@ -20,11 +20,9 @@ function download_elixir() {
 function install_elixir() {
   output_section "Installing Elixir ${elixir_version} $(elixir_changed)"
 
-  mkdir -p /app
-  cd /app
+  mkdir -p $(elixir_path)
+  cd /home/vcap/app
   
-  output_section "${whereami}"
-
   if type "unzip" &> /dev/null; then
     unzip -q ${cache_path}/$(elixir_download_file)
   else
@@ -33,8 +31,8 @@ function install_elixir() {
 
   cd - > /dev/null
 
-  chmod +x /app/bin/*
-  PATH=/app/bin:${PATH}
+  chmod +x /home/vcap/app/bin/*
+  PATH=/home/vcap/app/bin:${PATH}
 
   export LC_CTYPE=en_US.utf8
 }
