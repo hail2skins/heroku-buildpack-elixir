@@ -22,7 +22,7 @@ function install_elixir() {
 
   mkdir -p $(elixir_path)
   cd $(elixir_path)
-  local pwd
+  output_section pwd
 
   if type "unzip" &> /dev/null; then
     unzip -q ${cache_path}/$(elixir_download_file)
