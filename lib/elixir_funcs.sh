@@ -21,7 +21,7 @@ function install_elixir() {
   output_section "Installing Elixir ${elixir_version} $(elixir_changed)"
 
   mkdir -p $(elixir_path)
-  cd $(elixir_path)
+  cd /app
   
   output_section "${whereami}"
 
@@ -33,8 +33,8 @@ function install_elixir() {
 
   cd - > /dev/null
 
-  chmod +x $(elixir_path)/bin/*
-  PATH=$(elixir_path)/bin:${PATH}
+  chmod +x /app/bin/*
+  PATH=/app/bin:${PATH}
 
   export LC_CTYPE=en_US.utf8
 }
@@ -58,10 +58,6 @@ function fix_elixir_version() {
     output_line "https://github.com/HashNuke/heroku-buildpack-elixir"
     exit 1
   fi
-}
-
-function whereami() {
-  pwd -P
 }
 
 function elixir_download_file() {
