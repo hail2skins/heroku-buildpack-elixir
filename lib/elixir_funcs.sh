@@ -10,7 +10,7 @@ function download_elixir() {
     output_section "Fetching Elixir ${elixir_version} for OTP ${otp_version}"
 
     local download_url="https://github.com/elixir-lang/elixir/releases/download/${elixir_version}/Precompiled.zip"
-    curl -s "https://github.com/elixir-lang/elixir/releases/download/v1.4.4/Precompiled.zip" -o ${cache_path}/Precompiled.zip
+    curl -s "https://github.com/elixir-lang/elixir/archive/v1.4.4.zip" -o ${cache_path}/$(elixir_download_file) -o ${cache_path}/$(elixir_download_file)
     
     if [ $? -ne 0 ]; then
       output_section "Falling back to fetching Elixir ${elixir_version} for generic OTP version"
@@ -29,7 +29,7 @@ function install_elixir() {
   cd $(elixir_path)
 
   if type "unzip" &> /dev/null; then
-    unzip -q ${cache_path}/Precompiled
+    unzip -q ${cache_path}/$(elixir_download_file)
   else
     jar xf ${cache_path}/$(elixir_download_file)
   fi
