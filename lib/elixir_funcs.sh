@@ -20,7 +20,7 @@ function download_elixir() {
 function install_elixir() {
   output_section "Installing Elixir ${elixir_version} $(elixir_changed)"
 
-  mkdir -p $(elixir_path)
+  mkdir -p /app
   cd /app
   
   output_section "${whereami}"
