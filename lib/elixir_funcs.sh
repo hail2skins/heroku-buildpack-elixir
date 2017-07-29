@@ -9,8 +9,8 @@ function download_elixir() {
 
     output_section "Fetching Elixir ${elixir_version} for OTP ${otp_version}"
 
-    local download_url="https://github.com/elixir-lang/elixir/releases/download/${elixir_version}/Precompiled.zip"
-    curl -s "https://codeload.github.com/elixir-lang/elixir/zip/v1.4.4" -o ${cache_path}/$(elixir_download_file)
+    local download_url="https://codeload.github.com/elixir-lang/elixir/zip/${elixir_download_file}"
+    curl -s ${download_url} -o ${cache_path}/$(elixir_download_file)
     
   else
     output_section "Using cached Elixir ${elixir_version}"
@@ -21,7 +21,7 @@ function install_elixir() {
   output_section "Installing Elixir ${elixir_version} $(elixir_changed)"
 
   mkdir -p $(elixir_path)
-  cd /home/vcap/app
+  cd $(elixir_path)
   
   if type "unzip" &> /dev/null; then
     unzip -q ${cache_path}/$(elixir_download_file)
@@ -31,8 +31,8 @@ function install_elixir() {
 
   cd - > /dev/null
 
-  chmod +x /home/vcap/app/bin/*
-  PATH=/home/vcap/app/bin:${PATH}
+  chmod +x $(elixir_path)/bin/*
+  PATH=$(elixir_path)/bin:${PATH}
 
   export LC_CTYPE=en_US.utf8
 }
