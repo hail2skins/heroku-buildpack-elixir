@@ -22,7 +22,8 @@ function install_elixir() {
 
   mkdir -p $(elixir_path)
   cd $(elixir_path)
-  output_section pwd
+  
+  echo pwd
 
   if type "unzip" &> /dev/null; then
     unzip -q ${cache_path}/$(elixir_download_file)
@@ -57,6 +58,10 @@ function fix_elixir_version() {
     output_line "https://github.com/HashNuke/heroku-buildpack-elixir"
     exit 1
   fi
+}
+
+function whereami() {
+  pwd
 }
 
 function elixir_download_file() {
