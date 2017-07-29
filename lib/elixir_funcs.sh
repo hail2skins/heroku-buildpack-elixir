@@ -10,7 +10,7 @@ function download_elixir() {
     output_section "Fetching Elixir ${elixir_version} for OTP ${otp_version}"
 
     local download_url="https://codeload.github.com/elixir-lang/elixir/zip/${elixir_download_file}"
-    curl -s "https://codeload.github.com/elixir-lang/elixir/zip/${elixir_download_file}" -o ${cache_path}/$(elixir_download_file)
+    curl -s "https://codeload.github.com/elixir-lang/elixir/zip/${elixir_version}" -o ${cache_path}/$(elixir_download_file)
     
   else
     output_section "Using cached Elixir ${elixir_version}"
