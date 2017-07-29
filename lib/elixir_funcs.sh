@@ -9,12 +9,12 @@ function download_elixir() {
 
     output_section "Fetching Elixir ${elixir_version} for OTP ${otp_version}"
 
-    local download_url="https://repo.hex.pm/builds/elixir/${elixir_version}-otp-${otp_version}.zip"
+    local download_url="https://github.com/elixir-lang/elixir/releases/download/${elixir_version}/Precompiled.zip"
     curl -s ${download_url} -o ${cache_path}/$(elixir_download_file)
 
     if [ $? -ne 0 ]; then
       output_section "Falling back to fetching Elixir ${elixir_version} for generic OTP version"
-      local download_url="https://repo.hex.pm/builds/elixir/${elixir_version}.zip"
+      local download_url="https://github.com/elixir-lang/elixir/archive/${elixir_version}.zip"
       curl -s ${download_url} -o ${cache_path}/$(elixir_download_file) || exit 1
     fi
   else
