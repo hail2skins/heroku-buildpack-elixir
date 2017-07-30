@@ -24,14 +24,14 @@ function install_elixir() {
   cd $(elixir_path)
   
   if type "unzip" &> /dev/null; then
-    unzip -q ${elixir_path}/$(elixir_download_file)
+    unzip -q ${cache_path}/$(elixir_download_file)
   else
     jar xf ${cache_path}/$(elixir_download_file)
   fi
 
   cd - > /dev/null
 
-  chmod +x $(elixir_path)/bin/*
+  chmod +x $(cache_path)/bin/*
   PATH=$(elixir_path)/bin:${PATH}
 
   export LC_CTYPE=en_US.utf8
