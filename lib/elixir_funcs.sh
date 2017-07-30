@@ -10,7 +10,7 @@ function download_elixir() {
     output_section "Fetching Elixir ${elixir_version} for OTP ${otp_version}"
 
     local download_url="https://codeload.github.com/elixir-lang/elixir/zip/v1.4.4"
-    curl -s "https://codeload.github.com/elixir-lang/elixir/tar.gz/v1.4.4" -o ${cache_path}/$(elixir_download_file)
+    curl -s "https://codeload.github.com/elixir-lang/elixir/zip/v1.4.4" -o ${cache_path}/$(elixir_download_file)
     
   else
     output_section "Using cached Elixir ${elixir_version}"
@@ -24,7 +24,7 @@ function install_elixir() {
   cd $(elixir_path)
   
   if type "unzip" &> /dev/null; then
-    unzip -q ${cache_path}/$(elixir_download_file)
+    unzip ${cache_path}/$(elixir_download_file)
   else
     jar xf ${cache_path}/$(elixir_download_file)
   fi
