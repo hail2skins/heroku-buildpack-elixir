@@ -31,8 +31,8 @@ function install_elixir() {
 
   cd - > /dev/null
 
-  chmod +x /elixir-1.4.4/bin/*
-  PATH=/elixir-1.4.4/bin:${PATH}
+  chmod +x elixir-1.4.4/bin/*
+  PATH=elixir-1.4.4/bin:${PATH}
 
   export LC_CTYPE=en_US.utf8
 }
